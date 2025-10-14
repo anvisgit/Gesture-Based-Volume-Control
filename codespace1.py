@@ -39,12 +39,17 @@ while True:
                     y1=y
                 cv2.line(frame,(x1,y1), (x0,y0),(0,255,0), 3 )
                 d=((x0-x1)**2+(y0-y1)**2)**0.5
+               
     
     cv2.imshow("Gesture-Based Volume Control", frame)
 
     key = cv2.waitKey(1)
     if key == 27:  # esc key
         break
+    if d>40:
+        pyautogui.press("volumeup")
+    else:
+        pyautogui.press("volumedown")
 
 cam.release()
 cv2.destroyAllWindows()
